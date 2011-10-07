@@ -1,0 +1,12 @@
+<% challenge = @submission.challenge %>
+<div class="action-bar clearfix">
+  <%= link_to "View", "" %>
+</div>
+<div class="submission profile clearfix">
+  <%= photo_image_tag @submission.main_photo %>
+  <div class="about">
+    <h5><%= link_to @submission.title, challenge_domain_url(challenge, submission_path(@submission)) %></h5>
+    <p>from <%= challenge.title %></p>
+    <p><%= @submission.website %></p>
+  </div>
+</div>

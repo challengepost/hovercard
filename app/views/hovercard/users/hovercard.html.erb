@@ -1,0 +1,11 @@
+<div class="action-bar clearfix">
+  <%= link_to "Profile", user_path(@user) %>
+  <%= link_to "Profile", user_path(@user) %>
+</div>
+<div class="user profile clearfix">
+  <%= photo_image_tag @user.photo %>
+  <div class="about">
+    <h5><%= link_to @user.full_name, user_path(@user) %></h5>
+    <p><%= @user.location %></p>
+  </div>
+</div>

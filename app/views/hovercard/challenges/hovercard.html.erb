@@ -1,0 +1,11 @@
+<div class="action-bar clearfix">
+  <%= link_to "View", challenge_domain_url(@challenge) %>
+  <%= link_to "Follow", challenge_domain_url(@challenge) %>
+</div>
+<div class="challenge profile clearfix">
+  <%= photo_image_tag @challenge.main_photo %>
+  <div class="about">
+    <h5><%= link_to @challenge.title, challenge_domain_url(@challenge) %></h5>
+    <p><%= @challenge.submissions.count %> submissions</p>
+  </div>
+</div>

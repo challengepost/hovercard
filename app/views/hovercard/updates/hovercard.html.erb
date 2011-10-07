@@ -1,0 +1,11 @@
+<div class="action-bar clearfix">
+  <%= link_to "+", "" %>
+</div>
+<div class="update profile clearfix">
+  <%= photo_image_tag @update.challenge.main_photo %>
+  <div class="about">
+    <h5><%= link_to @update.title, challenge_domain_url(@update.challenge) %></h5>
+    <p><%= pluralize @update.comments_count, "comment" %></p>
+    <%= (truncate @update.body, :length => 100).html_safe %>
+  </div>
+</div>
