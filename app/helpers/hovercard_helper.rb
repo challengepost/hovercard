@@ -1,4 +1,4 @@
-module Hovercard::HovercardHelper
+module HovercardHelper
 
   def hovercard_link_to(object, url, opts = {}, &block)
     data_url = hovercard_url_for(object)
