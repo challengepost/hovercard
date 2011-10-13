@@ -1,0 +1,10 @@
+<ul class="data">
+  <% data.each do |d| %>
+    <li>
+      <p class="<%= "ico " unless d[:no_ico] %><%= d[:class] %>">
+        <% unless d[:no_ico] %><span class='ico'></span><% end %>
+        <%= d[:link] ? link_to(d[:text], d[:link]) : d[:text] %>
+      </p>
+    </li>
+  <% end %>
+</ul>

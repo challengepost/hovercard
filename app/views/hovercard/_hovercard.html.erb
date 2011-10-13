@@ -1,0 +1,20 @@
+<%
+photo ||= nil
+klass = object.class.model_name.underscore
+no_action_bar ||= false
+%>
+
+<% unless no_action_bar %>
+  <div class="action-bar clearfix">
+    <ul data-dropdown="dropdown">
+      <%= render "hovercard/#{klass.pluralize}/action_bar", :object => object %>
+    </ul>
+  </div>
+<% end %>
+
+<div class="<%= klass %> profile clearfix">
+  <%= photo_image_tag photo, :large, :class => "challenge-photo" %>
+  <div class="about">
+    <%= yield %>
+  </div>
+</div>

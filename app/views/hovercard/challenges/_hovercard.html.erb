@@ -1,0 +1,10 @@
+<%= render :layout => "hovercard/hovercard", :locals => { :object => @challenge, :photo => @challenge.main_photo } do %>
+  <h5><%= link_to @challenge.title, challenge_domain_url(@challenge) %></h5>
+  <p class="subtitle"></p>
+  <% state = challenge_status @challenge %>
+  <%= render "hovercard/data", :data => [
+    { :text => pluralize(@challenge.submissions_count, "submission"), :class => "submissions" },
+    { :text => "$#{@challenge.total_cash_value} in prizes", :class => "awards" },
+    { :text => "#{state[:status]} &mdash; #{state[:time]}".html_safe, :class => "state" }
+  ] %>
+<% end %>

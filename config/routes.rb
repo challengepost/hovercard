@@ -9,8 +9,16 @@ Rails.application.routes.draw do
   end
 
   namespace :hovercard do
-    [:users, :challenges, :updates, :forum_topics, :submissions].each do |model|
+    [:users, :challenges, :submissions].each do |model|
       instance_exec(model, &HOVERCARD)
+    end
+
+    resources :challenges, :only => [] do
+      resources :supports, :only => [:create] do
+        collection do
+          delete :delete
+        end
+      end
     end
   end
 end

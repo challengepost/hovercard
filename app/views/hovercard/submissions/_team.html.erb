@@ -1,0 +1,9 @@
+<p>Team members</p>
+<ul class="team">
+  <% ([@submission.user] + @submission.team_members).each do |member| %>
+    <li>
+      <%= link_to user_photo_image_tag(member, :small, :class => "user_photo", :title => member.full_name),
+        "http://#{home_url}/users/#{member.full_name}", :title => member.full_name %>
+    </li>
+  <% end %>
+</ul>

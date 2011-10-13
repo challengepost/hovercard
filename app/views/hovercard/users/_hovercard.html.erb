@@ -1,0 +1,13 @@
+<% 
+user_setting = @user.user_setting
+no_action_bar = user_setting.website.blank? && user_setting.twitter.blank?
+%>
+
+<%= render :layout => "hovercard/hovercard", :locals => { :object => @user, :photo => @user.photo, :no_action_bar => no_action_bar } do %>
+  <h5><%= link_to @user.full_name, user_path(@user) %></h5>
+  <p class="subtitle"><%= @user.location %></p>
+  <%= render "hovercard/data", :data => [
+    { :text => pluralize(@award_count, "award"), :class => "awards" },
+    { :text => pluralize(@user.submissions_count, "submissions"), :class => "submissions" }
+  ] %>
+<% end %>
