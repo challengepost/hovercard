@@ -1,3 +1,3 @@
 <% user_setting = object.user_setting %>
 <li><%= link_to "Website<span class='ico'></span>".html_safe, user_setting.website, :class => "hc-button ico website", :target => "blank" unless user_setting.website.blank? %></li>
-<li><%= link_to "twitter<span class='ico'></span>".html_safe, "http://www.twitter.com/#{user_setting.twitter}", :class => "hc-button ico twitter", :target => "blank" unless user_setting.twitter.blank? %></li>
+<li><%= link_to "Twitter<span class='ico'></span>".html_safe, "http://www.twitter.com/#{user_setting.twitter}", :class => "hc-button ico twitter", :target => "blank" unless user_setting.twitter.blank? %></li>
