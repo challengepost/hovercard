@@ -7,8 +7,8 @@ no_action_bar = user_setting.website.blank? && user_setting.twitter.blank?
   <h5><%= link_to @user.full_name, profile_url(@user) %></h5>
   <p class="subtitle"><%= @user.location %></p>
   <%= render "hovercard/data", :data => [
-    { :text => pluralize(@award_count, "award"), :class => "awards" },
-    { :text => pluralize(@user.submissions_count, "submissions"), :class => "submissions" },
-    { :text => pluralize(@user.supported_challenges.published.active.count, "challenges"), :class => "challenges" }
+    { :text => pluralize(@awards_count, "award"), :class => "awards" },
+    { :text => pluralize(@submissions_count, "submissions"), :class => "submissions" },
+    { :text => pluralize(@challenges_count, "challenges"), :class => "challenges" }
   ] %>
 <% end %>

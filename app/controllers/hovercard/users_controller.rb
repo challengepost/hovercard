@@ -3,10 +3,13 @@ module Hovercard
     before_filter :find_user
 
     def hovercard
+      @challenges_count = @user.supported_challenges.published.active.count
+      @submissions_count = Submission.submissions_for(@user).eligible.count
+
       submission_ids = @user.all_submission_ids
       submission_ids = ['null'] if submission_ids.blank?
 
-      @award_count = Submission.includes(:challenge, :prizes).
+      @awards_count = Submission.includes(:challenge, :prizes).
         joins(<<-EOF).
         join `prizes_attributions` on `submissions`.id = `prizes_attributions`.submission_id
         join `challenges` AS challenges2 on `challenges2`.id  = `submissions`.challenge_id
@@ -16,7 +19,7 @@ module Hovercard
           and
         `challenges2`.moderation_stage = "#{Challenge::ModerationStage::FINISHED}"
       EOF
-      order("`prizes_attributions`.created_at DESC").count
+      order("`prizes_attributions`.created_at DESC").uniq.count
       super
     end
 
