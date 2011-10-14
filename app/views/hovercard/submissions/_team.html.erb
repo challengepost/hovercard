@@ -1,5 +1,5 @@
-<p>by</p>
 <ul class="team">
+  <li>By&nbsp;&nbsp;</li>
   <% ([@submission.user] + @submission.team_members).each do |member| %>
     <li>
       <%= link_to user_photo_image_tag(member, :small, :class => "user_photo", :title => member.full_name),
