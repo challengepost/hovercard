@@ -13,7 +13,7 @@ no_action_bar ||= false
 <% end %>
 
 <div class="<%= klass %> profile clearfix">
-  <%= photo_image_tag photo, :large, :class => "challenge-photo" %>
+  <%= photo_image_tag photo, size_of(photo), :class => "challenge-photo" %>
   <div class="about">
     <%= yield %>
   </div>
