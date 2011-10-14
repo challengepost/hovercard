@@ -19,7 +19,7 @@ module Hovercard
           and
         `challenges2`.moderation_stage = "#{Challenge::ModerationStage::FINISHED}"
       EOF
-      order("`prizes_attributions`.created_at DESC").uniq.count
+      order("`prizes_attributions`.created_at DESC").paginate(:page => 1).total_entries
       super
     end
 
