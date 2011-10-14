@@ -4,7 +4,7 @@ module Hovercard
 
     def hovercard
       @challenges_count = @user.supported_challenges.published.active.count
-      @submissions_count = Submission.submissions_for(@user).eligible.count
+      @submissions_count = Submission.submissions_for(@user).eligible.joins(:challenge).where("challenges.submissions_published = ? and challenges.published_at is not null", true).count
 
       submission_ids = @user.all_submission_ids
       submission_ids = ['null'] if submission_ids.blank?
