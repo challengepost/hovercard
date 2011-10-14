@@ -2,8 +2,8 @@
   <li>By&nbsp;&nbsp;</li>
   <% ([@submission.user] + @submission.team_members).each do |member| %>
     <li>
-      <%= link_to user_photo_image_tag(member, :small, :class => "user_photo", :title => member.full_name),
-        "http://#{home_url}/users/#{member.full_name}", :title => member.full_name %>
+      <%= link_to user_photo_image_tag(member, :small, :class => "user_photo", :alt => member.full_name),
+        "http://#{home_url}/users/#{member.screen_name}" %>
     </li>
   <% end %>
 </ul>
