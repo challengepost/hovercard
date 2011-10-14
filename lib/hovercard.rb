@@ -11,3 +11,4 @@ module Hovercard
 end
 
 require "hovercard/engine"
+require 'hovercard/railtie' if defined?(Rails)
