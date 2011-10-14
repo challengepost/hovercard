@@ -1,9 +1,10 @@
 <%
 challenge = @submission.challenge
 no_action_bar = @submission.video.blank? && @submission.website.blank?
+object_url = challenge_domain_url(challenge, submission_path(@submission))
 %>
-<%= render :layout => "hovercard/hovercard", :locals => { :object => @submission, :photo => @submission.main_photo, :no_action_bar => no_action_bar } do %>
-  <h5><%= link_to @submission.title, challenge_domain_url(challenge, submission_path(@submission)) %></h5>
+<%= render :layout => "hovercard/hovercard", :locals => { :object => @submission, :photo => @submission.main_photo, :object_url => object_url, :no_action_bar => no_action_bar } do %>
+  <h5><%= link_to @submission.title, object_url %></h5>
   <p class="subtitle">in <%= link_to challenge.title, challenge_domain_url(challenge) %></p>
   <%= render "hovercard/submissions/team" %>
 <% end %>

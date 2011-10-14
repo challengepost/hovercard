@@ -3,7 +3,7 @@
   <% ([@submission.user] + @submission.team_members).each do |member| %>
     <li>
       <%= link_to user_photo_image_tag(member, :small, :class => "user_photo", :alt => member.full_name),
-        "http://#{home_url}/users/#{member.screen_name}" %>
+        profile_url(member) %>
     </li>
   <% end %>
 </ul>

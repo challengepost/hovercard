@@ -1,10 +1,11 @@
 <%
 user_setting = @user.user_setting
 no_action_bar = user_setting.website.blank? && user_setting.twitter.blank?
+object_url = profile_url(@user)
 %>
 
-<%= render :layout => "hovercard/hovercard", :locals => { :object => @user, :photo => @user.photo, :no_action_bar => no_action_bar } do %>
-  <h5><%= link_to @user.full_name, profile_url(@user) %></h5>
+<%= render :layout => "hovercard/hovercard", :locals => { :object => @user, :photo => @user.photo, :object_url => object_url, :no_action_bar => no_action_bar } do %>
+  <h5><%= link_to @user.full_name, object_url %></h5>
   <p class="subtitle"><%= @user.location %></p>
   <%= render "hovercard/data", :data => [
     { :text => pluralize(@awards_count, "award"), :class => "awards" },
