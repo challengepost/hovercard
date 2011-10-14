@@ -1,4 +1,4 @@
-<% 
+<%
 user_setting = @user.user_setting
 no_action_bar = user_setting.website.blank? && user_setting.twitter.blank?
 %>
@@ -8,6 +8,7 @@ no_action_bar = user_setting.website.blank? && user_setting.twitter.blank?
   <p class="subtitle"><%= @user.location %></p>
   <%= render "hovercard/data", :data => [
     { :text => pluralize(@award_count, "award"), :class => "awards" },
-    { :text => pluralize(@user.submissions_count, "submissions"), :class => "submissions" }
+    { :text => pluralize(@user.submissions_count, "submissions"), :class => "submissions" },
+    { :text => pluralize(@user.supported_challenges.published.active.count, "challenges"), :class => "challenges" }
   ] %>
 <% end %>
