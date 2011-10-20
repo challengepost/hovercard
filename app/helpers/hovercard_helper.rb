@@ -14,6 +14,7 @@ module HovercardHelper
   end
 
   def size_of photo
+    return unless photo
     accepted_sizes = ["70x70", "100x100"]
     styles = photo.data.styles
     styles.keys.find { |key| accepted_sizes.include?(styles[key].geometry) } || :small
