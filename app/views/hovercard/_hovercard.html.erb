@@ -4,17 +4,19 @@ klass = object.class.model_name.underscore
 no_action_bar ||= false
 %>
 
-<% unless no_action_bar %>
-  <div class="action-bar clearfix">
-    <ul data-dropdown="dropdown">
-      <%= render "hovercard/#{klass.pluralize}/action_bar", :object => object %>
-    </ul>
-  </div>
-<% end %>
+<div id="<%= "hovercard-#{klass}" %>" class="mp-dashboard-track">
+  <% unless no_action_bar %>
+    <div class="action-bar clearfix">
+      <ul data-dropdown="dropdown">
+        <%= render "hovercard/#{klass.pluralize}/action_bar", :object => object %>
+      </ul>
+    </div>
+  <% end %>
 
-<div class="<%= klass %> profile clearfix">
-  <%= link_to photo_image_tag(photo, size_of(photo), :class => "challenge-photo"), object_url %>
-  <div class="about">
-    <%= yield %>
+  <div class="<%= klass %> profile clearfix">
+    <%= link_to photo_image_tag(photo, size_of(photo), :class => "challenge-photo"), object_url %>
+    <div class="about">
+      <%= yield %>
+    </div>
   </div>
 </div>
