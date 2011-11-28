@@ -3,7 +3,7 @@
     <li>
       <p class="<%= "ico " unless d[:no_ico] %><%= d[:class] %>">
         <% unless d[:no_ico] %><span class='ico'></span><% end %>
-        <%= d[:link] ? link_to(d[:text], d[:link]) : d[:text] %>
+        <%= d[:link] ? link_to(d[:text].html_safe, d[:link]) : d[:text].html_safe %>
       </p>
     </li>
   <% end %>
