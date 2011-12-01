@@ -9,10 +9,9 @@ object_url = challenge_domain_url(@challenge)
 <%= render :layout => "hovercard/hovercard", :locals => { :object => @challenge, :photo => @challenge.main_photo, :object_url => object_url } do %>
   <h5><%= link_to @challenge.title, object_url %></h5>
   <p class="subtitle"></p>
-  <% state = challenge_status @challenge %>
   <%= render "hovercard/data", :data => [
     { :text => pluralize(@challenge.submissions_count, "submission"), :class => "submissions" },
     { :text => "#{prize_value} in prizes", :class => "awards" },
-    { :text => state[:status] + (state[:time].empty? || state[:time].first.blank? ? "" : " &mdash; #{state[:time]}"), :class => "state" }
+    { :text => challenge_status(@challenge), :class => "state" }
   ] %>
 <% end %>
