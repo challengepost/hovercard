@@ -1,17 +1,19 @@
 <%
-prize_value = number_to_currency(@challenge.prize_value || 0,
-                                    :unit => @challenge.currency_unit,
-                                    :format => @challenge.currency_format,
-                                    :precision => 0)
-object_url = challenge_domain_url(@challenge)
+  prize_value = number_to_currency(@challenge.prize_value || 0,
+                                   :unit => @challenge.currency_unit,
+                                   :format => @challenge.currency_format,
+                                   :precision => 0)
+  object_url = challenge_domain_url(@challenge)
 %>
 
-<%= render :layout => "hovercard/hovercard", :locals => { :object => @challenge, :photo => @challenge.main_photo, :object_url => object_url } do %>
-  <h5><%= link_to @challenge.title, object_url %></h5>
-  <p class="subtitle"></p>
-  <%= render "hovercard/data", :data => [
-    { :text => pluralize(@challenge.submissions_count, "submission"), :class => "submissions" },
-    { :text => "#{prize_value} in prizes", :class => "awards" },
-    { :text => challenge_status(@challenge), :class => "state" }
-  ] %>
+<%= cache(@challenge.cache_key(:for => :hovercard), :expires_in => 15.minutes) do %>
+  <%= render :layout => "hovercard/hovercard", :locals => { :object => @challenge, :photo => @challenge.main_photo, :object_url => object_url } do %>
+    <h5><%= link_to @challenge.title, object_url %></h5>
+    <p class="subtitle"></p>
+    <%= render "hovercard/data", :data => [
+      { :text => pluralize(@challenge.eligible_submissions_count, "submission"), :class => "submissions" },
+      { :text => "#{prize_value} in prizes", :class => "awards" },
+      { :text => challenge_status(@challenge), :class => "state" }
+    ] %>
+  <% end %>
 <% end %>
