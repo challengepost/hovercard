@@ -11,7 +11,7 @@
     <h5><%= link_to @challenge.title, object_url %></h5>
     <p class="subtitle"></p>
     <%= render "hovercard/data", :data => [
-      { :text => pluralize(@challenge.eligible_submissions_count, "submission"), :class => "submissions" },
+      { :text => "#{pluralize(@challenge.eligible_submissions_count, @challenge.submission_object)} in the gallery", :class => "submissions" },
       { :text => "#{prize_value} in prizes", :class => "awards" },
       { :text => challenge_status(@challenge), :class => "state" }
     ] %>
