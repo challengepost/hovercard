@@ -6,6 +6,8 @@
       <%= link_to "Follow<span class='ico'></span>".html_safe, hovercard_challenge_supports_path(object), :remote => true, :method => :post, :class => "hc-button ico follow" %>
     <% end %>
   <% end %>
-
-  <%= link_to "#{object.supports_count}<span class='ico'></span>".html_safe, challenge_domain_url(object), :class => "hc-button ico supporters" %>
+  <div class="hc-button ico supporters disabled-button">
+    <%= object.supports_count %>
+    <span class='ico'></span>
+  </div>
 </li>
