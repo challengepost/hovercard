@@ -44,6 +44,6 @@ module HovercardHelper
     object = challenge.submission_object
     count  = challenge.eligible_submissions_count
 
-    { :text => "<strong>#{count}</strong> #{count > 1 ? pluralize(object) : object}</strong> in the gallery", :class => "submissions" }
+    { :text => "<strong>#{count}</strong> #{count > 1 ? object.pluralize : object}</strong> in the gallery", :class => "submissions" }
   end
 end
