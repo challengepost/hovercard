@@ -2,7 +2,7 @@
   <li>By&nbsp;&nbsp;</li>
   <% ([@submission.user] + @submission.team_members).each do |member| %>
     <li>
-      <%= link_to_profile memeber, user_photo_image_tag(member, :small, :class => "user_photo", :alt => member.full_name) %>
+      <%= link_to_profile member, user_photo_image_tag(member, :small, :class => "user_photo", :alt => member.full_name) %>
     </li>
   <% end %>
 </ul>
