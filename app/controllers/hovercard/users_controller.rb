@@ -12,7 +12,7 @@ module Hovercard
     private
 
     def find_user
-      @user = User.find_by_screen_name!(params[:id])
+      @user = User.existing.find_by_screen_name!(params[:id])
     end
   end
 end
