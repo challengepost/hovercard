@@ -2,6 +2,7 @@
 photo ||= nil
 klass = object.class.model_name.underscore
 no_action_bar ||= false
+size ||= :small
 %>
 
 <div id="<%= "hovercard-#{klass}" %>" class="mp-dashboard-track">
@@ -14,7 +15,7 @@ no_action_bar ||= false
   <% end %>
 
   <div class="<%= klass %> profile clearfix">
-    <%= link_to photo_image_tag(photo, size_of(photo), :class => "challenge-photo"), object_url %>
+    <%= link_to photo_image_tag(photo, size, :class => "challenge-photo"), object_url %>
     <div class="about">
       <%= yield %>
     </div>

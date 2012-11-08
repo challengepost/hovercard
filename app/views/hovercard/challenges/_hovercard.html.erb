@@ -3,7 +3,7 @@
 %>
 
 <%= cache(@challenge.base_cache_key(:hovercard, :challenge_updated, @challenge.updated_at.to_i), :expires_in => 15.minutes) do %>
-  <%= render :layout => "hovercard/hovercard", :locals => { :object => @challenge, :photo => @challenge.main_photo, :object_url => object_url } do %>
+  <%= render :layout => "hovercard/hovercard", :locals => { :object => @challenge, :photo => @challenge.main_photo, :object_url => object_url, :size => :small } do %>
     <h5><%= link_to @challenge.title, object_url %></h5>
     <p class="subtitle"></p>
     <%= render "hovercard/data", :data => build_challenge_hovercard_data(@challenge) %>

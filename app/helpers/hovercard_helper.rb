@@ -13,20 +13,12 @@ module HovercardHelper
     polymorphic_path [:hovercard, :hovercard, object]
   end
 
-  def size_of photo
-    return if photo.blank?
-    return :small if photo.is_a?(Hash)
-    accepted_sizes = ["70x70", "100x100"]
-    styles = photo.data.styles
-    styles.keys.find { |key| accepted_sizes.include?(styles[key].geometry) } || :small
-  end
-
   def build_challenge_hovercard_data(challenge)
     data = [
       { :text => challenge_status(challenge), :class => "state" }
-    ] 
+    ]
 
-    data.unshift(build_challenge_prize_hovercard_data(challenge)) if challenge.prizes.any? && challenge.total_cash_value > 0 
+    data.unshift(build_challenge_prize_hovercard_data(challenge)) if challenge.prizes.any? && challenge.total_cash_value > 0
     data.unshift(build_challenge_submissions_hovercard_data(challenge)) if challenge.eligible_submissions_count > 0
     data
   end
