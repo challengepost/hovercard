@@ -15,7 +15,7 @@ size ||= :small
   <% end %>
 
   <div class="<%= klass %> profile clearfix">
-    <%= link_to photo_image_tag(photo, size, :class => "challenge-photo"), object_url %>
+    <%= link_to photo_image_tag(photo, size: size, class: "challenge-photo"), object_url %>
     <div class="about">
       <%= yield %>
     </div>
