@@ -5,14 +5,19 @@ module Hovercard
     before_filter :find_challenge
 
     def create
-      Support.create!(:level => Support::Levels::CHALLENGE, :user => current_user, :challenge => @challenge)
+      Support.user_supports_challenge(
+        current_user,
+        @challenge,
+        level: Support::Levels::CHALLENGE
+      )
+
       respond_to do |format|
         format.js { @challenge.reload }
       end
     end
 
     def delete
-      if (support = current_user.supports.where(:challenge_id => @challenge).first) && support.destroy
+      if (support = current_user.support_for(@challenge)) && support.destroy
         respond_to do |format|
           format.html { redirect_to root_url, :notice => "You are no longer following this challenge." }
           format.js { @challenge.reload }
