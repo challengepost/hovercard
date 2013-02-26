@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  HOVERCARD = Proc.new do |model|
+  @hovercard = Proc.new do |model|
     resources model, :only => [] do
       member do
         get :hovercard
@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   namespace :hovercard do
     [:users, :challenges, :submissions].each do |model|
-      instance_exec(model, &HOVERCARD)
+      instance_exec(model, &@hovercard)
     end
 
     resources :challenges, :only => [] do
